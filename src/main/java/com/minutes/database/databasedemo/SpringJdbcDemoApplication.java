@@ -1,7 +1,7 @@
-package comin.minutes.database.databasedemo;
+package com.minutes.database.databasedemo;
 
-import comin.minutes.database.databasedemo.bean.Person;
-import comin.minutes.database.databasedemo.jdbc.PersonJdbcDAO;
+import com.minutes.database.databasedemo.entity.Person;
+import com.minutes.database.databasedemo.jdbc.PersonJdbcDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class SpringJdbcDemoApplication implements CommandLineRunner {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -33,10 +33,10 @@ public class SpringJdbcDemoApplication implements CommandLineRunner {
 				dao.deleteById(10002));
 
 		logger.info("Inserting 10004 -> {}",
-				dao.insert(new Person(10004, "Tara", "Berlin", new Date())));
+				dao.insert(new Person( "Tara", "Berlin", new Date())));
 
 		logger.info("Update 10003 -> {}",
-				dao.update(new Person(10003, "Pieter", "Utrecht", new Date())));
+				dao.update(new Person("Pieter", "Utrecht", new Date())));
 
 	}
 }

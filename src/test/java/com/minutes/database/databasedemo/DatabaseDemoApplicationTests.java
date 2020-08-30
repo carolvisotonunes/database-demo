@@ -1,4 +1,4 @@
-package comin.minutes.database.databasedemo;
+package com.minutes.database.databasedemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

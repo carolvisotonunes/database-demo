@@ -1,6 +1,6 @@
-package comin.minutes.database.databasedemo.jdbc;
+package com.minutes.database.databasedemo.jdbc;
 
-import comin.minutes.database.databasedemo.bean.Person;
+import com.minutes.database.databasedemo.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,7 +25,7 @@ public class PersonJdbcDAO {
             person.setId(rs.getInt("id"));
             person.setName(rs.getString("name"));
             person.setLocation(rs.getString("location"));
-            person.setBirthday(rs.getTimestamp("birth_date"));
+            person.setBirthday(rs.getTimestamp("birthday"));
             return person;
         }
 
@@ -45,13 +45,13 @@ public class PersonJdbcDAO {
     }
 
     public int insert(Person person) {
-        return jdbcTemplate.update("insert into person (id, name, location, birth_date) " + "values(?,  ?, ?, ?)",
+        return jdbcTemplate.update("insert into person (id, name, location, birthday) " + "values(?,  ?, ?, ?)",
                 new Object[] { person.getId(), person.getName(), person.getLocation(),
                         new Timestamp(person.getBirthday().getTime()) });
     }
 
     public int update(Person person) {
-        return jdbcTemplate.update("update person " + " set name = ?, location = ?, birth_date = ? " + " where id = ?",
+        return jdbcTemplate.update("update person " + " set name = ?, location = ?, birthday = ? " + " where id = ?",
                 new Object[] { person.getName(), person.getLocation(), new Timestamp(person.getBirthday().getTime()),
                         person.getId() });
     }
